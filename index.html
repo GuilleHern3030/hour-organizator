@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>index.html</title>
+    <link rel="stylesheet" type="text/css" href="./styles/normalize.css">
+    <link rel="stylesheet" type="text/css" href="./styles/nav-float.css">
+    <link rel="stylesheet" type="text/css" href="./styles/footer.css">
+    <link rel="stylesheet" type="text/css" href="./styles/header.css">
+    <link rel="stylesheet" type="text/css" href="./styles/scroll-design.css">
+	<link rel="stylesheet" type="text/css" href="./styles/style.css">
+	<script type="module" src="./scripts/HourOrganizator.js"></script>
+</head>
+
+<body>
+    
+    <header>
+        <div class="header-top"></div>
+        <h1 class="titulo">Organizador de horarios</h1>
+        <div class="header-bottom"></div>
+    </header>
+
+    <main>
+        <section class="form center">
+            <fieldset class="form-campos">
+
+                <div class="contenedor-campos">
+
+                    <div class="campo">
+                        <label>Nombre de la tarea</label>
+                        <div style="display:inline-block">
+                            <input id="nombre-task" type="text" placeholder="Nombre de tarea" name="name" required="">
+                            <input id="color-task" type="color" name="color" required="">
+                        </div>
+                    </div>
+
+                    <!-- <div class="campo">
+                        <label>Descripción de la tarea</label>
+                        <input id="description-task" type="text" placeholder="Descripción de la tarea" name="description" required="">
+                    </div> -->
+
+                    <div class="campo hours">
+                        <label>Horario</label>
+                        <input class="hour-in" type="time">
+                        <input class="hour-out" type="time">
+                        <select class="week-day">
+                            <option>Lunes</option>
+                            <option>Martes</option>
+                            <option>Miércoles</option>
+                            <option>Jueves</option>
+                            <option>Viernes</option>
+                            <option>Sábado</option>
+                            <option>Domingo</option>
+                        </select>
+                        <div><button id="add-hour">+</button></div>
+                    </div>
+
+                    <div class="campo-extra"> </div>
+                    
+                </div>
+
+                <div class="warning hide">
+                    <p>* Debes completar todos los campos</p>
+                </div>
+
+                <div class="button-div">
+                    <button id="submit">Crear</button>
+                </div>
+
+            </fieldset>
+        </section>
+
+        <section>
+
+            <div class="grid-container" id="table">
+        
+            </div>
+        
+            <div class="references-container" id="references">
+            </div>
+            
+        </section>
+
+    </main>
+
+    <footer>
+        <p>©2023 Guillermo Hernandez</p>
+    </footer>
+
+</body>
+</html>

@@ -1,0 +1,131 @@
+:root {
+    --footer-background-color: rgb(58, 57, 58);
+    --add-hour-button-size: 4vw;
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box
+}
+
+body {
+    background: rgb(192, 192, 192);
+}
+
+.grid-container {
+    margin: 15px;
+    background: #ffffff;
+}
+
+.references-container {
+    margin-left: 25px;
+    margin-right: 25px;
+    background-color: rgb(192, 192, 192);
+}
+
+.test {
+    background-color: #fff;
+}
+
+main {
+    padding-bottom: 2rem;
+}
+
+footer {
+    flex-grow: 1; /* si fuera 0, se ajusta sólo al contenido */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: var(--footer-background-color);
+    padding: 1rem;
+    font-size: var(--footer-fontsize);
+    text-align: center;
+    color:aliceblue;
+}
+
+fieldset {
+    margin: 1.5vw;
+    padding-top: 1.3rem;
+}
+
+.campo {
+    user-select: none;
+    font-size: 1.7vw;
+    margin-bottom: 1.7vw;
+}
+
+.campo label {
+    color: #000000;
+    font-weight: bold;
+    margin: .5rem;
+    margin-right: 4vw
+}
+
+.button-div {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+#submit {
+    margin: 1em; 
+    padding: 4px 12px;
+    font-size: 2vw;
+    background-color: bisque;
+    border-radius: 10px;
+}
+
+.center, .hours div {
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.hide {
+    display: none
+}
+
+.warning {
+    font-size: 2.4vw;
+    color: red;
+    user-select: none;
+}
+
+.hours {
+    display: grid;
+    grid-template-columns: repeat(5, min-content);
+    grid-gap: .3rem 1rem;
+}
+
+#add-hour {
+    font-size: calc(var(--add-hour-button-size) * .8);
+    font-weight: bold;
+    height: var(--add-hour-button-size);
+    width: var(--add-hour-button-size);
+    border-radius: 50%;
+}
+
+@media (max-width: 768px) {
+    #color-task {
+        height: 2.3vw;
+        width: 4vw;
+    }
+}
+
+@media (min-width: 768px) {
+
+    #submit { font-size: 24px; }
+
+    #add-hour { 
+        font-size: 1.6rem; 
+        height: 2rem;
+        width: 2rem;
+    }
+    
+    .campo {
+        font-size: 1.7rem;
+        margin-bottom: 1.5rem;
+    }
+}

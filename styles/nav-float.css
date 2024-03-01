@@ -1,0 +1,209 @@
+/*
+    <div class="float-nav">
+        <responsive-float-nav>
+            <div class="float-nav-span">
+                <span class="float-nav-responsive-span-top"></span>
+                <span class="float-nav-responsive-span-center"></span>
+                <span class="float-nav-responsive-span-bottom"></span>
+            </div>
+            <div class="float-nav__ul">
+                <div class="float-nav__ul-li"><a href="#">Los enlaces</a></div>
+                <div class="float-nav__ul-li"><a href="#">pueden ser</a></div>
+                <div class="float-nav__ul-li"><a href="#">de 10 char</a></div>
+                <div class="float-nav__ul-li"><a href="#">y máximo 5</a></div>
+            </div>
+        </responsive-float-nav>
+        <script type="module" src="../scripts/nav-float.js"></script>
+    </div>
+*/
+
+:root {
+    --nav-color: rgb(216, 132, 71);
+    --nav-text-color-selected: #03156b;
+    --nav-text-color: #ffffff;
+    --nav-menu-bar-color: #fff;
+
+    --nav-size: 80px; /* Tamaño del nav flotante */
+    --nav-size-hover-scale: 6; /* Escala de crecimiento del menu al desplegarse */
+    --nav-menu-left-position: 12px; /* Posicion horizontal */
+    --nav-menu-top-position: 40px;  /* Posicion vertical */
+    --nav-text-separation: 2.5px; /* Separación entre los items del menu */
+}
+
+.float-nav {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    border-radius: 100%;
+    height: var(--nav-size);
+    width: var(--nav-size);
+    top: 2.5%;
+    right: 2.5%;
+    z-index: 9997;
+}
+
+.float-nav responsive-float-nav .float-nav__ul {
+    list-style: none;
+}
+
+.float-nav responsive-float-nav a {
+    display:block;
+    color:var(--nav-text-color);
+    text-decoration:none;
+    font-weight:400;
+    text-align: right;
+    font-family:"HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    letter-spacing: 1px;
+}
+
+.float-nav responsive-float-nav {
+    border-radius: 100%;
+    height: var(--nav-size);
+    width: var(--nav-size);
+    z-index: 9998;
+    transition: transform 0.5s;
+    background-color: var(--nav-color);
+}
+
+.float-nav responsive-float-nav .float-nav-span span {
+    display: block;
+    width: calc(var(--nav-size) / 2);
+    height: calc(var(--nav-size) / 15);
+    left: calc(var(--nav-size) / 4);
+    margin-bottom: 0;
+    border-radius: 15%;
+    background-color: var(--nav-menu-bar-color);
+    transition: transform 0.3s;
+}
+
+.float-nav responsive-float-nav .float-nav-span {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    height: 80%;
+    width: 60%;
+    left: 20%;
+    top: 10%;
+    z-index: 9999;
+    transition: transform 0.3s;
+}
+
+.float-nav responsive-float-nav .float-nav__ul {
+    display: none;
+    color: var(--nav-text-color);
+    font-size: calc(var(--nav-size) / calc(var(--nav-size-hover-scale) * 3));
+    position: absolute;
+    text-align: center;
+    top: var(--nav-menu-top-position);
+    left: var(--nav-menu-left-position);
+    top: -110%;
+    animation: float-nav-responsive-animation-menu 0.3s forwards;
+}
+
+.float-nav responsive-float-nav .float-nav__ul .float-nav__ul-li {
+    margin-bottom: var(--nav-text-separation);
+    text-align: center;
+}
+
+.float-nav responsive-float-nav .float-nav__ul .float-nav__ul-li a {
+    text-align: center;
+}
+
+.float-nav responsive-float-nav .float-nav__ul .float-nav__ul-li:hover > a {
+    color: var(--nav-text-color-selected);
+    transform: scale(1.1);
+}
+
+
+/*****************************[ Animations ]***********************************/
+/* CSS */
+/*
+.float-nav responsive-float-nav:hover > .float-nav-span { 
+    transform: 
+        scale(.2)
+        translateY(calc(var(--nav-size)/(-5))) 
+        translateX(calc(var(--nav-size)/(2.5)))
+}
+.float-nav responsive-float-nav:hover > .float-nav-span .float-nav-responsive-span-top { 
+    transform: 
+        translateY(calc(var(--nav-size)/(7.3))) 
+        translateX(calc(var(--nav-size)/(-6)))
+        rotate(-45deg); 
+}
+.float-nav responsive-float-nav:hover > .float-nav-span .float-nav-responsive-span-bottom { 
+    transform: 
+        translateY(calc(var(--nav-size)/(-3.4))) 
+        translateX(calc(var(--nav-size)/(-6))) 
+        rotate(45deg);
+}
+.float-nav responsive-float-nav:hover > .float-nav-span .float-nav-responsive-span-center { 
+    transform: 
+        translateY(calc(var(--nav-size)/(-13))) 
+        translateX(calc(var(--nav-size)/(-6))) 
+        scaleY(0) 
+        scaleX(0); 
+}
+
+.float-nav responsive-float-nav:hover {
+    transform: scaleX(var(--nav-size-hover-scale)) scaleY(var(--nav-size-hover-scale));
+}
+
+.float-nav responsive-float-nav:hover > .float-nav__ul {
+    display: block;
+}
+
+
+/* JS */
+.float-nav .responsive-float-nav__inactive:hover, .float-nav .responsive-float-nav__active:hover,
+.float-nav .responsive-float-nav__inactive:hover > .float-nav-span, .float-nav .responsive-float-nav__active:hover > .float-nav-span,
+.float-nav .responsive-float-nav__inactive:hover > .float-nav-span .float-nav-responsive-span-top, .float-nav .responsive-float-nav__active:hover > .float-nav-span .float-nav-responsive-span-top,
+.float-nav .responsive-float-nav__inactive:hover > .float-nav-span .float-nav-responsive-span-center, .float-nav .responsive-float-nav__active:hover > .float-nav-span .float-nav-responsive-span-center,
+.float-nav .responsive-float-nav__inactive:hover > .float-nav-span .float-nav-responsive-span-bottom, .float-nav .responsive-float-nav__active:hover > .float-nav-span .float-nav-responsive-span-bottom,
+.float-nav .responsive-float-nav__inactive:hover > .float-nav__ul, .float-nav .responsive-float-nav__active:hover > .float-nav__ul {
+    transition: none;
+    transform: none;
+}
+.float-nav .responsive-float-nav__inactive:hover > .float-nav__ul {
+    display: none;
+    transition: none;
+}
+
+.float-nav .responsive-float-nav__active .float-nav__ul { animation: float-nav-responsive-animation-menu 0.3s forwards !important; display: block !important; }
+.float-nav .responsive-float-nav__inactive .float-nav__ul { animation: float-nav-responsive-animation-menu 0.3s reverse !important; }
+
+.float-nav .responsive-float-nav__active .float-nav-span .float-nav-responsive-span-top { animation: float-nav-responsive-animation-span-top 0.4s forwards; display:block; }
+.float-nav .responsive-float-nav__active .float-nav-span .float-nav-responsive-span-center { animation: float-nav-responsive-animation-span-center 0.4s forwards; display:block; }
+.float-nav .responsive-float-nav__active .float-nav-span .float-nav-responsive-span-bottom { animation: float-nav-responsive-animation-span-bottom 0.4s forwards; display:block; }
+.float-nav .responsive-float-nav__active { animation: float-nav-responsive-animation-scale-menu 0.35s forwards !important; }
+.float-nav .responsive-float-nav__active .float-nav-span { animation: float-nav-responsive-animation-scale-bars 0.3s forwards !important; }
+
+.float-nav .responsive-float-nav__inactive .float-nav-span .float-nav-responsive-span-top { animation: float-nav-responsive-animation-span-top-r 0.35s reverse backwards; display:block; }
+.float-nav .responsive-float-nav__inactive .float-nav-span .float-nav-responsive-span-center { animation: float-nav-responsive-animation-span-center-r 0.35s reverse backwards; display:block; }
+.float-nav .responsive-float-nav__inactive .float-nav-span .float-nav-responsive-span-bottom { animation: float-nav-responsive-animation-span-bottom-r 0.35s reverse backwards; display:block; }
+.float-nav .responsive-float-nav__inactive { animation: float-nav-responsive-animation-scale-menu-r 0.28s reverse backwards !important; }
+.float-nav .responsive-float-nav__inactive .float-nav-span { animation: float-nav-responsive-animation-scale-bars-r 0.3s reverse backwards !important; }
+
+@keyframes float-nav-responsive-animation-span-top { 0% { top: 30%; } 100% { transform: translateY(calc(var(--nav-size)/(7.3))) translateX(calc(var(--nav-size)/(-6))) rotate(-45deg); } }
+@keyframes float-nav-responsive-animation-span-center { 0% { top: 50%; } 100% { transform: translateY(calc(var(--nav-size)/(-13))) translateX(calc(var(--nav-size)/(-6))) scale(0); } }
+@keyframes float-nav-responsive-animation-span-bottom { 0% { top: 70%; } 100% { transform: translateY(calc(var(--nav-size)/(-3.4))) translateX(calc(var(--nav-size)/(-6))) rotate(45deg); } }
+@keyframes float-nav-responsive-animation-scale-menu { 100% { transform: scaleX(var(--nav-size-hover-scale)) scaleY(var(--nav-size-hover-scale)); } }
+@keyframes float-nav-responsive-animation-scale-bars { 100% { transform: scale(.2) translateY(calc(var(--nav-size)/(-5))) translateX(calc(var(--nav-size)/(2.5))); } } 
+
+@keyframes float-nav-responsive-animation-span-top-r { 0% { top: 30%; } 100% { transform: translateY(calc(var(--nav-size)/(7.3))) translateX(calc(var(--nav-size)/(-6))) rotate(-45deg); } }
+@keyframes float-nav-responsive-animation-span-center-r { 0% { top: 50%; } 100% { transform: translateY(calc(var(--nav-size)/(-13))) translateX(calc(var(--nav-size)/(-6))) scale(0); } }
+@keyframes float-nav-responsive-animation-span-bottom-r { 0% { top: 70%; } 100% { transform: translateY(calc(var(--nav-size)/(-3.4))) translateX(calc(var(--nav-size)/(-6))) rotate(45deg); } }
+@keyframes float-nav-responsive-animation-scale-menu-r { 100% { transform: scaleX(var(--nav-size-hover-scale)) scaleY(var(--nav-size-hover-scale)); } }
+@keyframes float-nav-responsive-animation-scale-bars-r { 100% { transform: scale(.2) translateY(calc(var(--nav-size)/(-5))) translateX(calc(var(--nav-size)/(2.5))); } } 
+
+/* ************************************************************************** */
+
+
+@keyframes float-nav-responsive-animation-menu { 
+    0% { top: -110%; transform: scale(0) } 
+    20% { top: -100%; transform: scale(0) } 
+    30% { top: var(--nav-menu-top-position); transform: scale(0) } 
+    100% { top: var(--nav-menu-top-position); transform: scale(1) } 
+}
