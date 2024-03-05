@@ -73,7 +73,13 @@ fieldset {
     padding: 4px 12px;
     font-size: 2vw;
     background-color: bisque;
+    transition: transform 0.12s;
     border-radius: 10px;
+}
+
+#submit:hover {
+    cursor: pointer;
+    transform: scale(1.1);
 }
 
 .center, .hours div {
@@ -107,10 +113,30 @@ fieldset {
     border-radius: 50%;
 }
 
-@media (max-width: 768px) {
+#add-hour:hover {
+    cursor: pointer;
+}
+
+@media (max-width: 360px) {
     #color-task {
         height: 2.3vw;
         width: 4vw;
+    }
+}
+
+@media (min-width: 360px) {
+    
+    .campo {
+        font-size: .70rem;
+        margin-bottom: 1.5rem;
+    }
+}
+
+@media (min-width: 480px) {
+    
+    .campo {
+        font-size: 1rem;
+        margin-bottom: 1.5rem;
     }
 }
 
