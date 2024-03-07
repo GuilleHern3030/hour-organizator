@@ -13,6 +13,7 @@ const parseHourToDecimal = (inputTimeValue) => {
 }
 
 const restartHourContainer = () => {
+    document.querySelector("#color-task").value = randomColor()
     document.querySelector(".hours").innerHTML = `
         <label class="hours-0">Horario</label>
         <input class="hour-in hours-0" type="time">
@@ -137,4 +138,14 @@ const showTable = (tableDiv, referencesDiv, tasks) => {
             table.assignCells(taskTable, task.getDayWeek(t), task.getInitialHour(t), task.getLastHour(t));
         table.addReference(referencesDiv, task.description(), taskTable);
     });
+}
+
+const randomColor = () => {
+    let colorHex = "#";
+    for(let i = 0; i < 6; i++) {
+        let random = Math.floor(Math.random() * 16); // 0 - 15
+        if (random > 9) random = String.fromCharCode(random + 55)
+        colorHex += random;
+    }
+    return colorHex;
 }

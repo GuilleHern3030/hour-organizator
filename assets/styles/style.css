@@ -1,7 +1,18 @@
 :root {
     --footer-background-color: rgb(58, 57, 58);
     --add-hour-button-size: 4vw;
+    font-size: 2vw;
 }
+
+@media (min-width: 220px) { :root { font-size: 3vw; } }
+
+@media (min-width: 360px) { :root { font-size: 15px; } }
+
+@media (min-width: 480px) { :root { font-size: 17px; } }
+
+@media (min-width: 768px) { :root { font-size: 18px; } }
+
+@media (min-width: 1024px) { :root { font-size: 20px; } }
 
 * {
     padding: 0;
@@ -14,14 +25,25 @@ body {
 }
 
 .grid-container {
-    margin: 15px;
+    margin-bottom: 10px;
     background: #ffffff;
+}
+
+@media (min-width: 360px) { 
+    .grid-container { margin: 15px; } 
+    .references-container { background-color: rgb(192, 192, 192) }
+}
+
+@media (max-width: 360px) { 
+    .grid-container { padding: 10px; } 
+    .hour-organizator-section { background: #ffffff; }
+    .references-container { background-color: #ffffff }
 }
 
 .references-container {
     margin-left: 25px;
     margin-right: 25px;
-    background-color: rgb(192, 192, 192);
+    font-size: 22px;
 }
 
 .test {
@@ -30,18 +52,9 @@ body {
 
 main {
     padding-bottom: 2rem;
-}
-
-footer {
-    flex-grow: 1; /* si fuera 0, se ajusta sólo al contenido */
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    background-color: var(--footer-background-color);
-    padding: 1rem;
-    font-size: var(--footer-fontsize);
-    text-align: center;
-    color:aliceblue;
+    align-items: center;
 }
 
 fieldset {
@@ -49,9 +62,14 @@ fieldset {
     padding-top: 1.3rem;
 }
 
+.hour-organizator-section {
+    overflow-x: auto;
+    width: 95vw;
+}
+
 .campo {
     user-select: none;
-    font-size: 1.7vw;
+    /* font-size: 1.7vw; */
     margin-bottom: 1.7vw;
 }
 
@@ -71,7 +89,6 @@ fieldset {
 #submit {
     margin: 1em; 
     padding: 4px 12px;
-    font-size: 2vw;
     background-color: bisque;
     transition: transform 0.12s;
     border-radius: 10px;
@@ -80,6 +97,11 @@ fieldset {
 #submit:hover {
     cursor: pointer;
     transform: scale(1.1);
+}
+
+#color-task {
+    width: 3em;
+    height: 1.25em;
 }
 
 .center, .hours div {
@@ -94,7 +116,7 @@ fieldset {
 }
 
 .warning {
-    font-size: 2.4vw;
+    /* font-size: 2.4vw; */
     color: red;
     user-select: none;
 }
@@ -106,7 +128,7 @@ fieldset {
 }
 
 #add-hour {
-    font-size: calc(var(--add-hour-button-size) * .8);
+    /* font-size: calc(var(--add-hour-button-size) * .8); */
     font-weight: bold;
     height: var(--add-hour-button-size);
     width: var(--add-hour-button-size);
@@ -115,13 +137,6 @@ fieldset {
 
 #add-hour:hover {
     cursor: pointer;
-}
-
-@media (max-width: 360px) {
-    #color-task {
-        height: 2.3vw;
-        width: 4vw;
-    }
 }
 
 @media (min-width: 360px) {

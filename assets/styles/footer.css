@@ -1,5 +1,5 @@
 :root {
-    --footer-img-size: 50px
+    --footer-img-size: 80px
 }
 
 footer {
@@ -7,20 +7,25 @@ footer {
     padding: 1rem;
     margin-top: 2rem;
     font-size: 16px !important;
+    color:aliceblue;
 }
-
-@media only screen and (min-width: 360px) { :root { --footer-img-size: 100px; } }
-@media only screen and (min-width: 480px) { :root { --footer-img-size: 130px; } footer { font-size: 18px !important; } }
-@media only screen and (min-width: 720px) { :root { --footer-img-size: 180px; } footer { font-size: 20px !important; } }
-@media only screen and (min-width: 1024px) { :root { --footer-img-size: 250px; } footer { font-size: 22px !important; } }
 
 .footer {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: space-around;
     align-items: center;
     user-select: none;
 }
+
+@media only screen and (min-width: 360px) { 
+    :root { --footer-img-size: 100px; } 
+    .footer { flex-direction: row;}
+}
+@media only screen and (min-width: 480px) { :root { --footer-img-size: 130px; } footer { font-size: 18px !important; } }
+@media only screen and (min-width: 720px) { :root { --footer-img-size: 180px; } footer { font-size: 20px !important; } }
+@media only screen and (min-width: 1024px) { :root { --footer-img-size: 250px; } footer { font-size: 22px !important; } }
+
 
 .footer__title {
     font-size: 1.4em;
@@ -66,4 +71,5 @@ footer {
 
 .footer__credits {
     font-size: 0.8em;
+    text-align: center;
 }
